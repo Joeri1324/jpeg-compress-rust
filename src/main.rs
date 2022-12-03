@@ -142,7 +142,6 @@ impl HuffmanTree {
 
         let mut current_node = &*self.root;
         for bit in code {
-            println!("{bit}");
             match &bit {
                 true => {
                     if let Some(new_current_node) = &current_node.right {
