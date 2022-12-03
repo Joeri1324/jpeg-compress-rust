@@ -102,7 +102,10 @@ fn build_huffman_from_frequencies(frequencies: &HashMap<char, i32>) -> HuffmanTr
         let mut table = HashMap::new();
         build_table(&root, Vec::new(), &mut table);
 
-        return HuffmanTree { table: table, root: Box::new(root) };
+        return HuffmanTree {
+            table: table,
+            root: Box::new(root),
+        };
     } else {
         panic!("Something strange going on :/")
     }
@@ -131,7 +134,7 @@ impl HuffmanTree {
                 }
             }
         }
-        return result
+        return result;
     }
 
     fn decode(&self, code: &Vec<bool>) -> Vec<char> {
@@ -157,9 +160,7 @@ impl HuffmanTree {
                     result.push(value);
                     current_node = &*self.root;
                 }
-                None => {
-
-                }
+                None => {}
             }
         }
 
@@ -180,7 +181,7 @@ fn get_frequencies(chars: &[char]) -> HashMap<char, i32> {
 fn code_to_string(code: &Vec<bool>) -> String {
     let code_chars: Vec<&str> = code.iter().map(|x| if *x { "1" } else { "0" }).collect();
     let code_string = code_chars.join("");
-    return code_string
+    return code_string;
 }
 
 fn display_code(code: &Vec<bool>) {
@@ -224,7 +225,6 @@ fn char_vec_to_string(chars: &Vec<char>) -> String {
     let strings: Vec<String> = chars.iter().map(|x| x.to_string()).collect();
     return strings.join("");
 }
-
 
 fn char_slice_to_string(chars: &[char]) -> String {
     let strings: Vec<String> = chars.iter().map(|x| x.to_string()).collect();
